@@ -1,0 +1,347 @@
+---
+title: "Collecte de données automatisée en ligne"
+subtitle: "API et web scraping"
+author: "Vestin Hategekimana"
+date: "2023-11-23"
+execute:
+  echo: true
+knitr:
+  opts_chunk: 
+    collapse: true
+format: 
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    preview-links: true
+    toc: true
+    toc-depth: 1
+    highlight-style: dracula
+editor: visual
+---
+
+# Présentation
+
+------------------------------------------------------------------------
+
+##  {auto-animate="true"}
+
+### Collecte de données en ligne
+
+::: incremental
+-   Deux articles en cours de rédaction utilisant la collecte de données en ligne.
+
+-   **Trois catégories:**
+
+    -   **API**: Services de communication entre applications
+
+    -   **Web Scraping**: Utilisation de bots pour la collecte de données
+
+    -   **Web Crawling**: Utilisation de bots pour le référencement de liens
+:::
+
+##  {auto-animate="true"}
+
+### Collecte de données en ligne
+
+-   **Deux catégories:**
+
+    -   **API**: Services de communication entre applications
+
+    -   **Web Scraping**: Utilisation de bots pour la collecte de données
+
+##  {auto-animate="true"}
+
+### Collecte de données en ligne
+
+-   **Deux catégories:**
+
+    -   **API**: Services de communication entre applications
+
+        -   API officielle
+
+        -   API non-officielle
+
+    -   **Web Scraping**: Utilisation de bots pour la collecte de données
+
+##  {auto-animate="true"}
+
+### Collecte de données en ligne
+
+-   **Deux catégories:**
+
+    -   **API**: Services de communication entre applications
+
+        -   API officielle
+
+        -   API non-officielle
+
+    -   **Web Scraping**: Utilisation de bots pour la collecte de données
+
+        -   Requête HTTP simple
+
+        -   Automation d'un navigateur web
+
+##  {auto-animate="true"}
+
+### Collecte de données en ligne
+
+-   **Deux catégories:**
+
+    -   **API**: Services de communication entre applications
+
+        -   API officielle
+
+        -   [API non-officielle (Article 1)]{style="color: blue;"}
+
+    -   **Web Scraping**: Utilisation de bots pour la collecte de données
+
+        -   Requête HTTP simple
+
+        -   [Automation d'un navigateur web (Article 2)]{style="color: blue;"}
+
+# Article 1: les RESTful APIs et autres sources de données
+
+## Did the Covid-19 impact migrant residential mobility patterns in Switzerland?
+
+-   **Hypothèse:** Intention de mobilité en diminution durant la période de COVID-19 en Suisse.
+
+-   Besoin de données sur les intentions de mobilité: [Google Trends]{style="color: blue;"}
+
+-   [Pas d'API officielle pour Google Trends]{style="color: red;"}
+
+-   [Langage R]{style="color: blue;"}
+
+##  {auto-animate="true"}
+
+#### Qu'est-ce qu'une API?
+
+[**A**pplication **P**rogramming **I**nterface]{style="color: blue;"} ou "interface de programmation d'application"
+
+> Une [**API** est une interface]{style="color: blue;"} par laquelle un [programme]{style="color: blue;"} ou un [site web]{style="color: blue;"} communique avec un autre. Elles sont utilisées pour partager [des données et des services]{style="color: blue;"}. Et il y a des formats et types différents.
+
+*Source: Nasty Newt, Grepper*
+
+##  {auto-animate="true"}
+
+#### Qu'est-ce qu'une API RESTful?
+
+> Une [**API RESTful**]{style="color: blue;"} est [l'une des nombreuses façons]{style="color: blue;"} dont les programmes, les serveurs et les sites web peuvent partager [des données et des services]{style="color: blue;"}. REST (Representational State Transfer) décrit les règles générales de représentation des données et des services par le biais de l'API afin que d'autres programmes puissent demander et recevoir correctement les données et les services qu'une API met à disposition.
+
+*Source: Nasty Newt, Grepper*
+
+------------------------------------------------------------------------
+
+### Les APIs
+
+::: incremental
+-   **APIs officielles (par une organisation)**
+
+    -   **Requêtes simples:** Le travail se fait sur une autre machine
+
+    -   **Règles strictes:** Peut engendrer des limites d'accès (financier, quantité, etc.)
+
+-   **APIs non-officielles (des particuliers/amateurs)**
+
+    -   **Requêtes simples:** Le travail se fait sur notre machine
+
+    -   **Interface entre l'utilisateur et le site:** Liberté, mais pas forcément autorisé
+:::
+
+------------------------------------------------------------------------
+
+### Exemple d'APIs
+
+**Officielles: Libre et gratuit**
+
+-   [openAFRICA](https://africaopendata.org/), [OpenSanctions](https://www.opensanctions.org/api/), [French Address Search](https://geo.api.gouv.fr/adresse), etc.
+
+**Officielles: Authentification et gratuit**
+
+-   [Black History Facts](https://www.blackhistoryapi.io/docs), [GENESIS](https://www.destatis.de/EN/Service/OpenData/api-webservice.html), [Kaggle](https://www.kaggle.com/docs/api), etc.
+
+**Officielles: Authentification et payant (ou restriction)**
+
+-   [Twitter API](https://developer.twitter.com/en/docs/twitter-api), [meteoblue Dataset API](https://content.meteoblue.com/en/business-solutions/weather-apis/dataset-api), [OpenAI API](https://platform.openai.com/docs/guides/text-generation), etc.
+
+**Non-officielles:**
+
+-   [Twint](https://github.com/twintproject/twint), [gtrendsR](https://dgarcia-eu.github.io/SocialDataScience/1_Introduction/017_gtrendsR/gtrendsR.html), [BFS](https://felixluginbuhl.com/BFS/), etc
+
+------------------------------------------------------------------------
+
+### [gtrendsR](https://dgarcia-eu.github.io/SocialDataScience/1_Introduction/017_gtrendsR/gtrendsR.html)
+
+![](image/Corrélation.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Résultat (1)
+
+![](image/lockdowns.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Résultat (2)
+
+![](image/Comparaison.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Limitations
+
+1.  [Résultats non-reproductibles](https://www.frontiersin.org/articles/10.3389/frma.2021.670226/full)
+    -   Échantillons
+    -   Valeurs normalisés, popularité relative (temps et lieu)
+    -   La taille de la période de recherche change les résultats
+    -   Petit volume de recherche réduit à zéro
+    -   [Résultat varient en fonction du jour de collecte](https://journals.sagepub.com/doi/10.1177/00016993221151118)
+2.  Possibilité d'être bloqué
+    -   Fenêtre de temps floue
+    -   Reverse engineering
+
+# Article 2: Introduction au web scraping
+
+------------------------------------------------------------------------
+
+### Digital platforms and spatial dynamics: how Airbnb and TripAdvisor reshapes tourist movements and destinations?
+
+-   **Hypothèse:** Les plateformes numériques définissent la visibilité des lieux
+
+    -   Les lieux mis en avant sont concentrés aux mêmes endroits
+
+-   Besoin de **coordonnées** de différentes entités:
+
+    -   Hôtel, Restaurant, Location de vacances, Tours et Activités
+
+-   [Pas d'API -\> Web Scraping]{style="color: red;"}
+
+-   [Langage Python]{style="color: blue;"}
+
+## Qu'est-ce que le web scraping?
+
+::: callout-note
+**Web scraping**: Processus de collecte de données d'une page web. Le but est de récolter, nettoyer puis de transformer les données dans un format réutilisable.
+
+Le web scraping a plusieurs utilisations:
+
+-   Création d'API
+
+-   Traçage d'information (business ...)
+
+-   Recherche
+:::
+
+## Qu'est-ce que le web scraping?
+
+[![https://images.app.goo.gl/jwGcJVPCR8PzJSK66](image/Web-scraping.png){fig-align="center"}](https://images.app.goo.gl/jwGcJVPCR8PzJSK66)
+
+------------------------------------------------------------------------
+
+## De données non-structurées à données structurées
+
+[![https://images.app.goo.gl/zZwSLcYC2mNaCcxr5](image/structuré_non_structuré.png){fig-align="center"}](https://images.app.goo.gl/zZwSLcYC2mNaCcxr5)
+
+------------------------------------------------------------------------
+
+## Notre cas
+
+-   [Hôtel](https://www.tripadvisor.com/Hotels-g187849-Milan_Lombardy-Hotels.html)
+
+-   [Restaurant](https://www.tripadvisor.com/Restaurants-g187849-Milan_Lombardy.html)
+
+-   [Location de vacances](https://www.tripadvisor.com/VacationRentals-g187849-Reviews-Milan_Lombardy-Vacation_Rentals.html)
+
+-   [Tours](https://www.tripadvisor.com/Attractions-g187849-Activities-c42-Milan_Lombardy.html)
+
+-   [Activités](https://www.tripadvisor.com/Attractions-g187849-Activities-oa0-Milan_Lombardy.html)
+
+------------------------------------------------------------------------
+
+### Comment faire du web scraping?
+
+**Les étapes:**
+
+1.  Choisir un outil (langage de programmation, application)
+
+2.  Choisir un site web et l'analyser/l'auditer
+
+3.  Planifier la collecte (code)
+
+4.  Collecter les données
+
+***Notions:** HTML, CSS et base de programmation.*
+
+------------------------------------------------------------------------
+
+## Résultat (1)
+
+![](image/tripad_density_plot.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Résultat (2)
+
+![](image/airbnb_tripad_density_plot.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Difficultés
+
+-   Complexité du site web (Structure, JavaScript, etc.)
+
+-   Pages non-uniformes (CSS selector, JSON et AJAX)
+
+-   Grande quantité de données
+
+-   Collecte non-autorisée
+
+    -   Rate limit
+
+    -   Que faire des données?
+
+# Les restrictions
+
+## Aspect légal
+
+[**Le web scraping n'est pas illégal en soi.**]{style="color: red;"}
+
+> Tant que **nous ne collectons pas des [données personnelles]{style="color: blue;"} ou [soumises à la propriété intellectuelle]{style="color: blue;"}**, le web scraping reste légal.
+
+> Les sites internet peuvent aussi avoir des consignes concernant le web scraping sur leur page qui se trouvent généralement dans leur robots.txt.
+
+## Restrictions volontaires
+
+Les sites peuvent placer des restrictions pour empêcher des bots de collecter les données sur leur page:
+
+-   En empêchant de manipuler le contenu
+
+-   En demandant d'avoir un "header", généralement un navigateur
+
+-   En faisant des CAPTCHAS ou autres tests pour vérifier que c'est bien un humain qui fait la requête
+
+------------------------------------------------------------------------
+
+## Collecte de données automatisé en ligne
+
+**Avantage**
+
+-   Automatisation du processus
+
+-   Grande quantité de données disponibles
+
+-   Données rares
+
+**Désavantage**
+
+-   Nouvelles compétences
+
+-   Risques liés aux données
+
+-   Risques de problèmes de reproductibilité
+
+------------------------------------------------------------------------
+
+## Merci pour votre attention
+
+### **Question?**
